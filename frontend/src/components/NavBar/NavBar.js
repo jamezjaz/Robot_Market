@@ -1,24 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavStyles from '../NavBar/NavStyles.module.css';
 import logo from '../../assets/robot.jpg';
 
 const NavBar = () => (
   <>
-      <nav>
-        <h2
-          className="logo"
-          style={{ color: 'white' }}
-        >
-        <Link to="/">
+      <nav className={NavStyles.nav}>
+        <h2 className="logo">
+          <Link to="/">
             <img src={logo} alt={logo} />
-        </Link>
-        Robot Market
+          </Link>
+          Robot Market
         </h2>
-      <ul>
-        <Link to="/">
+      <ul className={NavStyles.navLinks}>
+        <Link className={NavStyles.lists} to="/">
           <li>Home</li>
         </Link>
-        <Link to="/about">
+        <Link className={NavStyles.lists} to="/about">
           <li>About Us</li>
         </Link>
       </ul>
