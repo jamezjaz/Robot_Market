@@ -2,7 +2,7 @@ import React from 'react';
 
 const RobotList = () => (
   <>
-    <h2>HOT DEALS!</h2>
+    <h2 className="text-center">HOT DEALS!</h2>
   </>
 );
 
