@@ -14,7 +14,7 @@ const RobotList = props => {
   return (
     <>
       <h2 className="text-center">HOT DEALS!</h2>
-      <table>
+      <table className="container-fluid d-flex flex-wrap">
         {allRobots.map(robot => (
           <Robot
             key={JSON.stringify(robot)}

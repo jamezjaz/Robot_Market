@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import RobotStyles from './RobotStyles.module.css';
 
 const Robot = props => {
   const { robot } = props;
@@ -9,8 +10,10 @@ const Robot = props => {
       <tbody>
         <tr>
           <td>
-            <div>
-              <img src={robot.image} alt={robot.name} />
+            <div className={RobotStyles.robotContainer}>
+              <div className={RobotStyles.imgContainer}>
+                <img src={robot.image} alt={robot.name} />
+              </div>
               <h5>{robot.name}</h5>
               <h6>{`฿${robot.price}`}</h6>
               <h6>{robot.stock}</h6>
