@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import fetchRobots from '../../apiRequest/apiRequest';
 
-const RobotList = () => {
+const RobotList = props => {
+  const { robots, fetchedRobots } = props;
+
   useEffect(() => {
     fetchedRobots(robots);
   });
@@ -14,8 +17,21 @@ const RobotList = () => {
   );
 };
 
+RobotList.propTypes = {
+  robots: PropTypes.arrayOf(PropTypes.shape({})),
+  fetchedRobots: PropTypes.func.isRequired,
+};
+
+RobotList.defaultProps = {
+  robots: [],
+};
+
+const mapStateToProps = state => ({
+  allRobots: state.robots.data,
+});
+
 const mapDispatchToProps = dispatch => ({
   fetchedRobots: robots => dispatch(fetchRobots(robots)),
 });
 
-export default connect(null, mapDispatchToProps)(RobotList);
+export default connect(mapStateToProps, mapDispatchToProps)(RobotList);

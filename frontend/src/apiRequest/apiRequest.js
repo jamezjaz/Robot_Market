@@ -1,12 +1,13 @@
 import axios from 'axios';
-import { robotRequest, robotRequestSuccess } from '../redux/actions/actionCreators';
+import { robotRequest, robotRequestFailure, robotRequestSuccess } from '../redux/actions/actionCreators';
 
-const base = 'http://localhost:';
-const PORT = 8000;
-const path = 'api/robots';
+// const base = 'http://localhost:';
+// const PORT = 8000;
+// const path = '/api/robots';
 
 const fetchRobots = () => dispatch => {
-  const url = `${base}${PORT}${path}`;
+  // const url = `${base}${PORT}${path}`;
+  const url = 'http://localhost:8000/api/robots';
   dispatch(robotRequest);
   axios.get(url, {
     method: 'GET',
@@ -16,8 +17,11 @@ const fetchRobots = () => dispatch => {
       const robotRes = res.data;
       dispatch(robotRequestSuccess(robotRes));
       console.log(robotRes);
+    })
+    .catch(error => {
+      const errorMsg = error.message;
+      dispatch(robotRequestFailure(errorMsg));
     });
-  // console.log(robotRes);
 };
 
 export default fetchRobots;
