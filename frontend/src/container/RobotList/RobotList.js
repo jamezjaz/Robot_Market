@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchRobots from '../../apiRequest/apiRequest';
+import Robot from '../../components/Robot/Robot';
 
 const RobotList = props => {
   const { allRobots, fetchedRobots } = props;
@@ -13,18 +14,14 @@ const RobotList = props => {
   return (
     <>
       <h2 className="text-center">HOT DEALS!</h2>
-      <div>
+      <table>
         {allRobots.map(robot => (
-          <div key={JSON.stringify(robot)}>
-            <img src={robot.image} alt={robot.name} />
-            <h5>{robot.name}</h5>
-            <p>{`฿${robot.price}`}</p>
-            <span>{robot.stock}</span>
-            <small>{robot.createdAt}</small>
-            <p>{robot.material}</p>
-          </div>
+          <Robot
+            key={JSON.stringify(robot)}
+            robot={robot}
+          />
         ))}
-      </div>
+      </table>
     </>
   );
 };
