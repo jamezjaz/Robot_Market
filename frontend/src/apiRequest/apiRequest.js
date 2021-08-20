@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { robotRequest, robotRequestSuccess } from '../redux/actionCreators';
+import { robotRequest, robotRequestSuccess } from '../redux/actions/actionCreators';
 
 const base = 'http://localhost:';
 const PORT = 8000;

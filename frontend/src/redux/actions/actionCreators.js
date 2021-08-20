@@ -1,4 +1,4 @@
-import { FETCH_ROBOTS_FAILURE, FETCH_ROBOTS_REQUEST, FETCH_ROBOTS_SUCCESS } from './actions/actionTypes';
+import { FETCH_ROBOTS_FAILURE, FETCH_ROBOTS_REQUEST, FETCH_ROBOTS_SUCCESS } from './actionTypes';
 
 export const robotRequest = () => ({
   type: FETCH_ROBOTS_REQUEST,
