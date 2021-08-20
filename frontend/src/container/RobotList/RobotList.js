@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import fetchRobots from '../../apiRequest/apiRequest';
 
 const RobotList = props => {
-  const { robots, fetchedRobots } = props;
+  const { allRobots, fetchedRobots } = props;
 
   useEffect(() => {
-    fetchedRobots(robots);
-  });
+    fetchedRobots(allRobots);
+  }, []);
 
   return (
     <>
@@ -18,12 +18,12 @@ const RobotList = props => {
 };
 
 RobotList.propTypes = {
-  robots: PropTypes.arrayOf(PropTypes.shape({})),
+  allRobots: PropTypes.arrayOf(PropTypes.shape({})),
   fetchedRobots: PropTypes.func.isRequired,
 };
 
 RobotList.defaultProps = {
-  robots: [],
+  allRobots: [],
 };
 
 const mapStateToProps = state => ({
