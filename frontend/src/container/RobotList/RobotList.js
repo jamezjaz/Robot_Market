@@ -4,7 +4,7 @@ import fetchRobots from '../../apiRequest/apiRequest';
 
 const RobotList = () => {
   useEffect(() => {
-
+    fetchedRobots(robots);
   });
 
   return (
