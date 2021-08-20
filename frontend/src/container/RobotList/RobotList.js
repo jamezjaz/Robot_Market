@@ -13,6 +13,18 @@ const RobotList = props => {
   return (
     <>
       <h2 className="text-center">HOT DEALS!</h2>
+      <div>
+        {allRobots.map(robot => (
+          <div key={JSON.stringify(robot)}>
+            <img src={robot.image} alt={robot.name} />
+            <h5>{robot.name}</h5>
+            <p>{`฿${robot.price}`}</p>
+            <span>{robot.stock}</span>
+            <small>{robot.createdAt}</small>
+            <p>{robot.material}</p>
+          </div>
+        ))}
+      </div>
     </>
   );
 };
