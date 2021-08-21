@@ -6,6 +6,7 @@ import {
   REMOVE_ITEM,
   ADD_QUANTITY,
   SUB_QUANTITY,
+  FILTER_ROBOTS,
 } from './actionTypes';
 
 export const robotRequest = () => ({
@@ -40,4 +41,9 @@ export const addQuantity = name => ({
 export const subtractQuantity = name => ({
   type: SUB_QUANTITY,
   name,
+});
+
+export const filterRobots = category => ({
+  type: FILTER_ROBOTS,
+  payload: category,
 });
