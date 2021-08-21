@@ -8,7 +8,6 @@ import Robot from '../../components/Robot/Robot';
 const RobotList = props => {
   const { allRobots, fetchedRobots } = props;
   const id = uuid();
-  console.log(id);
 
   useEffect(() => {
     fetchedRobots(allRobots);
@@ -20,7 +19,7 @@ const RobotList = props => {
       <table className="container-fluid d-flex flex-wrap">
         {allRobots.map(robot => (
           <Robot
-            key={uuid()}
+            key={id}
             robot={robot}
           />
         ))}

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import uuid from 'react-uuid';
 import {
   robotRequest,
   robotRequestFailure,
@@ -18,7 +19,14 @@ const fetchRobots = () => dispatch => {
     mode: 'cors',
   })
     .then(res => {
-      const robotRes = res.data;
+      const robotRes = res.data.map(robot => {
+        // generates unique ids from react-uuid
+        const uniqueId = uuid();
+        return {
+          ...robot,
+          id: uniqueId,
+        };
+      });
       dispatch(robotRequestSuccess(robotRes));
       console.log(robotRes);
     })
