@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavStyles from './NavStyles.module.css';
 import logo from '../../assets/robot.jpg';
+import cart from '../../assets/cart.png';
 
 const NavBar = () => (
   <>
@@ -18,6 +19,12 @@ const NavBar = () => (
         </Link>
         <Link className={NavStyles.lists} to="/about">
           <li>About Us</li>
+        </Link>
+        <Link to="/cart">
+          <li>
+            <div className={NavStyles.counter}>0</div>
+            <img src={cart} className="w-75 pt-2" alt={cart} />
+          </li>
         </Link>
       </ul>
     </nav>
