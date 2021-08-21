@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 import fetchRobots from '../../apiRequest/apiRequest';
 import Robot from '../../components/Robot/Robot';
 
 const RobotList = props => {
   const { allRobots, fetchedRobots } = props;
+  const id = uuid();
+  console.log(id);
 
   useEffect(() => {
     fetchedRobots(allRobots);
@@ -17,7 +20,7 @@ const RobotList = props => {
       <table className="container-fluid d-flex flex-wrap">
         {allRobots.map(robot => (
           <Robot
-            key={JSON.stringify(robot)}
+            key={uuid()}
             robot={robot}
           />
         ))}
