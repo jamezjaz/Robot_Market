@@ -39,7 +39,7 @@ RobotList.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  allRobots: state.robots.data,
+  allRobots: state.robot.robots.data,
 });
 
 const mapDispatchToProps = dispatch => ({
