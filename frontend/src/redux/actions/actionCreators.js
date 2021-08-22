@@ -23,27 +23,27 @@ export const robotRequestFailure = error => ({
   payload: error,
 });
 
-export const addToCart = name => ({
+export const addToCart = id => ({
   type: ADD_TO_CART,
-  name,
+  id,
 });
 
-export const removeItem = name => ({
+export const removeItem = id => ({
   type: REMOVE_ITEM,
-  name,
+  id,
 });
 
-export const addQuantity = name => ({
+export const addQuantity = id => ({
   type: ADD_QUANTITY,
-  name,
+  id,
 });
 
-export const subtractQuantity = name => ({
+export const subtractQuantity = id => ({
   type: SUB_QUANTITY,
-  name,
+  id,
 });
 
-export const filterRobots = category => ({
+export const filterRobots = material => ({
   type: FILTER_ROBOTS,
-  payload: category,
+  payload: material,
 });

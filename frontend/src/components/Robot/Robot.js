@@ -1,11 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
+import { connect } from 'react-redux';
 import RobotStyles from './RobotStyles.module.css';
 import addBtn from '../../assets/add.gif';
+// import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/actions/actionCreators';
 
 const Robot = props => {
   const { robot } = props;
+  // const dispatch = useDispatch();
+
+  const handleAddToCart = id => {
+    const { addItemsToCart } = props;
+    console.log('Added to cart');
+    // dispatch(addToCart(id));
+    addItemsToCart(id);
+  };
+
   return (
     <>
       <tbody>
@@ -24,7 +36,11 @@ const Robot = props => {
                   <h6>{robot.material}</h6>
                 </div>
                 <div className="mt-5">
-                  <button type="button" className="rounded-circle">
+                  <button
+                    type="button"
+                    className="rounded-circle"
+                    onClick={() => { handleAddToCart(robot.id); }}
+                  >
                     <img src={addBtn} alt="add" />
                   </button>
                 </div>
@@ -48,4 +64,8 @@ Robot.propTypes = {
   }).isRequired,
 };
 
-export default Robot;
+const mapDispatchToProps = dispatch => ({
+  addItemsToCart: id => dispatch(addToCart(id)),
+});
+
+export default connect(null, mapDispatchToProps)(Robot);
