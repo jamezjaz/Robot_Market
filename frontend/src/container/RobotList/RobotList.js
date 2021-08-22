@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
 import fetchRobots from '../../apiRequest/apiRequest';
 import Robot from '../../components/Robot/Robot';
+import RobotListStyles from './RobotListStyles.module.css';
 
 const RobotList = props => {
   const { allRobots, fetchedRobots } = props;
@@ -15,7 +16,9 @@ const RobotList = props => {
 
   return (
     <>
-      <h2 className="text-center">HOT DEALS!</h2>
+      <div className={RobotListStyles.dealsFilter}>
+        <h2 className="text-center mx-4">HOT DEALS!</h2>
+      </div>
       <table className="container-fluid d-flex flex-wrap">
         {allRobots.map(robot => (
           <Robot
