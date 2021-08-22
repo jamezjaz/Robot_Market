@@ -4,6 +4,7 @@ const initialState = {
   robots: {
     data: [],
   },
+  // robots: [],
   loading: false,
   error: '',
 };
@@ -18,7 +19,8 @@ const robotReducer = (state = initialState, action) => {
     case FETCH_ROBOTS_SUCCESS:
       return {
         loading: false,
-        robots: action.payload,
+        robots: {data: action.payload},
+        // robots: action.payload,
         error: '',
       };
     case FETCH_ROBOTS_FAILURE:

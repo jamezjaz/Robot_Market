@@ -7,7 +7,7 @@ import Robot from '../../components/Robot/Robot';
 
 const RobotList = props => {
   const { allRobots, fetchedRobots } = props;
-  const id = uuid();
+  // console.log('all robots', allRobots);
 
   useEffect(() => {
     fetchedRobots(allRobots);
@@ -19,7 +19,7 @@ const RobotList = props => {
       <table className="container-fluid d-flex flex-wrap">
         {allRobots.map(robot => (
           <Robot
-            key={id}
+            key={uuid()}
             robot={robot}
           />
         ))}
@@ -30,6 +30,7 @@ const RobotList = props => {
 
 RobotList.propTypes = {
   allRobots: PropTypes.arrayOf(PropTypes.shape({})),
+  // allRobots: PropTypes.arrayOf({}),
   fetchedRobots: PropTypes.func.isRequired,
 };
 
@@ -40,6 +41,10 @@ RobotList.defaultProps = {
 const mapStateToProps = state => ({
   allRobots: state.robot.robots.data,
 });
+
+// const mapStateToProps = state => {
+//   console.log('State', state.robot);
+// };
 
 const mapDispatchToProps = dispatch => ({
   fetchedRobots: robots => dispatch(fetchRobots(robots)),
