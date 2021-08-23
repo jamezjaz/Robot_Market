@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { format } from 'date-fns';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import RobotStyles from './RobotStyles.module.css';
 import addBtn from '../../assets/add.gif';
 // import { useDispatch } from 'react-redux';
@@ -9,13 +9,18 @@ import { addToCart } from '../../redux/actions/actionCreators';
 
 const Robot = props => {
   const { robot } = props;
+  const addedItems = useSelector(state => state.robot.addedItems);
   // const dispatch = useDispatch();
 
   const handleAddToCart = id => {
     const { addItemsToCart } = props;
     console.log('Added to cart');
     // dispatch(addToCart(id));
-    addItemsToCart(id);
+    if (addedItems.length <= 5) {
+      addItemsToCart(id);
+    } else {
+      alert('You cannot add more than 5 items');
+    }
   };
 
   return (
@@ -38,7 +43,8 @@ const Robot = props => {
                 <div className="mt-5">
                   <button
                     type="button"
-                    className="rounded-circle"
+                    className={robot.stock > 0 ? "rounded-circle" : "disabled"}
+                    disabled={robot.stock > 0 ? false : true}
                     onClick={() => { handleAddToCart(robot.id); }}
                   >
                     <img src={addBtn} alt="add" />

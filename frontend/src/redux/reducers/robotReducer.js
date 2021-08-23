@@ -27,6 +27,7 @@ const robotReducer = (state = initialState, action) => {
       };
     case FETCH_ROBOTS_SUCCESS:
       return {
+        ...state,
         loading: false,
         robots: {data: action.payload},
         // robots: action.payload,
@@ -39,17 +40,24 @@ const robotReducer = (state = initialState, action) => {
         error: action.payload,
       };
     case ADD_TO_CART: {
-      // console.log('Action ID:', action.id, 'Action Type:', action.type);
+      console.log('Action ID:', action.id, 'Action Type:', action.type, action.id);
       const addedItem = state.robots.data.find(item => item.id === action.id);
+      console.log('Added Itemsss', addedItem);
+      console.log('State itemss', state);
+
       // check if the action id exists in the addedItems
       const existedItem = state.addedItems.find(item => action.id === item.id);
       
       if (existedItem) {
-        addedItem.quantity += 1;
-        return {
-          ...state,
-          total: state.total + addedItem.price,
-        };
+        if (state.addedItems.quantity < state.addedItems.stock) {
+          addedItem.quantity += 1;
+          return {
+            ...state,
+            total: state.total + addedItem.price,
+          };
+        } else {
+          alert('Items cannot be more than stocks');
+        }
       }
       addedItem.quantity = 1;
       // calculating the total
