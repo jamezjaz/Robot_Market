@@ -6,12 +6,12 @@ const DisplayTotal = () => {
   return (
     <>
       <div>
-        <h4>
+        <h4 className="text-center">
           Total:
           ฿
           {/* {total} */}
-          {/* {parseInt(total, 10)} */}
-          {total.replace(/^0+/, '')}
+          {parseInt(total, 10)}
+          {/* {total.replace(/^0+/, '')} */}
         </h4>
       </div>
     </>

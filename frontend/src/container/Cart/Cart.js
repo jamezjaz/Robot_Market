@@ -6,6 +6,7 @@ import sortUp from '../../assets/sort-up.png';
 import sortDown from '../../assets/sort-down.png';
 import uuid from 'react-uuid';
 import DisplayTotal from '../../components/DisplayTotal/DisplayTotal';
+import cartStyles from './CartStyles.module.css';
 
 const Cart = props => {
   const { addedItems } = props;
@@ -32,14 +33,14 @@ const Cart = props => {
 
   return (
     <>
-      <div className="container-fluid d-flex justify-content-center">
+      <div className={cartStyles.container}>
         <h3>Your Added Items:</h3>
         {addedItemsLen
           ? (
             addedItems.map(item => (
-              <div key={uuid()}>
+              <div key={uuid()} className={cartStyles.card}>
                 <div>
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.image} alt={item.name} className={cartStyles.img} />
                 </div>
                 <div>
                   <h5>{item.name}</h5>
@@ -70,6 +71,7 @@ const Cart = props => {
                   <img
                     src={sortUp}
                     alt="sort up"
+                    className={cartStyles.sortUp}
                   />
                 </Link>
                 <Link
@@ -79,11 +81,13 @@ const Cart = props => {
                   <img
                     src={sortDown}
                     alt="sort down"
+                    className={cartStyles.sortDown}
                   />
                 </Link>
                 <button
                   type="button"
                   onClick={() => { handleRemove(item.id); }}
+                  className={cartStyles.remove}
                 >
                   Remove
                 </button>
