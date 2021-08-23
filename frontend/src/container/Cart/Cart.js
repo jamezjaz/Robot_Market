@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addQuantity, removeItem, subtractQuantity } from '../../redux/actions/actionCreators';
+import sortUp from '../../assets/sort-up.png';
+import sortDown from '../../assets/sort-down.png';
+import uuid from 'react-uuid';
 
 const Cart = props => {
   const { addedItems } = props;
@@ -33,7 +36,7 @@ const Cart = props => {
         {addedItemsLen
           ? (
             addedItems.map(item => (
-              <div>
+              <div key={uuid()}>
                 <div>
                   <img src={item.image} alt={item.name} />
                 </div>
