@@ -5,6 +5,7 @@ import { addQuantity, removeItem, subtractQuantity } from '../../redux/actions/a
 import sortUp from '../../assets/sort-up.png';
 import sortDown from '../../assets/sort-down.png';
 import uuid from 'react-uuid';
+import DisplayTotal from '../../components/DisplayTotal/DisplayTotal';
 
 const Cart = props => {
   const { addedItems } = props;
@@ -100,6 +101,7 @@ const Cart = props => {
             <span>items to cart</span>
           </ul>
         </div>
+        <DisplayTotal />
       </div>
     </>
   );
