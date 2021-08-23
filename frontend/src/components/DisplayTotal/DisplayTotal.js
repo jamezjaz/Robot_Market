@@ -9,7 +9,9 @@ const DisplayTotal = () => {
         <h4>
           Total:
           ฿
-          {total}
+          {/* {total} */}
+          {/* {parseInt(total, 10)} */}
+          {total.replace(/^0+/, '')}
         </h4>
       </div>
     </>
