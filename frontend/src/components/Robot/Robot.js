@@ -43,7 +43,7 @@ const Robot = props => {
                 <div className="mt-5">
                   <button
                     type="button"
-                    className={robot.stock > 0 ? "rounded-circle" : "disabled"}
+                    className={robot.stock > 0 ? "rounded-circle bg-success" : "rounded bg-danger"}
                     disabled={robot.stock > 0 ? false : true}
                     onClick={() => { handleAddToCart(robot.id); }}
                   >
