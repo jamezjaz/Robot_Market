@@ -92,6 +92,14 @@ const Cart = props => {
           : (
               <p>Nothing!</p>
           )}
+        <div className="cart">
+          <h5>You have added:</h5>
+          <ul className="collection">
+            {addedItemsLen}
+            {' '}
+            <span>items to cart</span>
+          </ul>
+        </div>
       </div>
     </>
   );
