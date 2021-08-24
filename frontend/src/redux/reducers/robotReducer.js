@@ -53,7 +53,7 @@ const robotReducer = (state = initialState, action) => {
           addedItem.quantity += 1;
           return {
             ...state,
-            total: state.total + addedItem.price,
+            total: state.total + parseFloat(addedItem.price),
           };
         } else {
           alert('Items cannot be more than stocks');
@@ -61,7 +61,7 @@ const robotReducer = (state = initialState, action) => {
       }
       addedItem.quantity = 1;
       // calculating the total
-      const newTotal = state.total + addedItem.price;
+      const newTotal = state.total + parseFloat(addedItem.price);
       return {
         ...state,
         addedItems: [...state.addedItems, addedItem],
@@ -72,7 +72,7 @@ const robotReducer = (state = initialState, action) => {
       const itemToRemove = state.addedItems.find(item => action.id === item.id);
       const newItems = state.addedItems.filter(item => action.id !== item.id);
       // calculating the total
-      const newTotal = state.total - (itemToRemove.price * itemToRemove.quantity);
+      const newTotal = state.total - (parseFloat(itemToRemove.price) * itemToRemove.quantity);
       // console.log(itemToRemove);
       return {
         ...state,
@@ -83,7 +83,7 @@ const robotReducer = (state = initialState, action) => {
     case ADD_QUANTITY: {
       const addedItem = state.robots.data.find(item => item.id === action.id);
       addedItem.quantity += 1;
-      const newTotal = state.total + addedItem.price;
+      const newTotal = state.total + parseFloat(addedItem.price);
       return {
         ...state,
         total: newTotal,
@@ -94,7 +94,7 @@ const robotReducer = (state = initialState, action) => {
       // if the quantity == 0 then, it should be removed
       if (addedItem.quantity === 1) {
         const newItems = state.addedItems.filter(item => item.id !== action.id);
-        const newTotal = state.total - addedItem.price;
+        const newTotal = state.total - parseFloat(addedItem.price);
         return {
           ...state,
           addedItems: newItems,
@@ -102,7 +102,7 @@ const robotReducer = (state = initialState, action) => {
         };
       }
       addedItem.quantity -= 1;
-      const newTotal = state.total - addedItem.price;
+      const newTotal = state.total - parseFloat(addedItem.price);
       return {
         ...state,
         total: newTotal,

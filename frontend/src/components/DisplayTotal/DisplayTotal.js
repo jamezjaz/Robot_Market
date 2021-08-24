@@ -3,15 +3,16 @@ import { useSelector } from 'react-redux';
 
 const DisplayTotal = () => {
   const total = useSelector(state => state.robot.total);
+
   return (
     <>
       <div>
         <h4 className="text-center">
-          Total:
-          ฿
-          {/* {total} */}
-          {parseInt(total, 10)}
-          {/* {total.replace(/^0+/, '')} */}
+          <b>
+            Total:
+            ฿
+            {total}
+          </b>
         </h4>
       </div>
     </>
