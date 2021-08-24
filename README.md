@@ -73,6 +73,9 @@ This project was built using these technologies.
 * Redux-thunk
 * ES6
 * CSS modules
+* React Paginate
+* React uuid
+* date-fns
 
 ### Getting Started
 
