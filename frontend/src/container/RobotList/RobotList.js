@@ -56,11 +56,11 @@ const RobotList = props => {
         nextLabel={"Next"}
         pageCount={pageCount}
         onPageChange={changePage }
-        containerClassName={"paginationBtns"}
+        containerClassName={RobotListStyles.paginationBtns}
         previousLinkClassName={"previousBtn"}
         nextLinkClassName={"nextBtn"}
         disabledClassName={"paginateDisabled"}
-        activeClassName={"paginateActive"}
+        activeClassName={RobotListStyles.paginationActive}
       />
     </>
   );
