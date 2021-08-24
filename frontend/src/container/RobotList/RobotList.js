@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid';
@@ -11,6 +11,12 @@ import { filterRobots } from '../../redux/actions/actionCreators';
 const RobotList = props => {
   const { allRobots, fetchedRobots, filtered } = props;
   // console.log('all robots', allRobots);
+  const [pageNumber, setPageNumber] = useState(0);
+  // const dispatch = useDispatch();
+
+  const robotsPerPage = 10;
+  const pagesVisited = pageNumber * robotsPerPage;
+  const PaginateRobots = allRobots.slice(pagesVisited, pagesVisited + robotsPerPage);
 
   useEffect(() => {
     fetchedRobots(allRobots);
@@ -21,7 +27,8 @@ const RobotList = props => {
     filter(material);
   };
 
-  const filteredRobots = allRobots.filter(robot => (
+  // filter paginatedRobots instead of allRobots
+  const filteredRobots = PaginateRobots.filter(robot => (
     !!((filtered === null || filtered === robot.material))));
 
   return (
