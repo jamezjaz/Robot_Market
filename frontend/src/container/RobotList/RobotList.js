@@ -7,16 +7,13 @@ import Robot from '../../components/Robot/Robot';
 import RobotListStyles from './RobotListStyles.module.css';
 import RobotFilter from '../RobotFilter/RobotFilter';
 import { filterRobots } from '../../redux/actions/actionCreators';
+import ReactPaginate from 'react-paginate';
 
 const RobotList = props => {
   const { allRobots, fetchedRobots, filtered } = props;
   // console.log('all robots', allRobots);
   const [pageNumber, setPageNumber] = useState(0);
   // const dispatch = useDispatch();
-
-  const robotsPerPage = 10;
-  const pagesVisited = pageNumber * robotsPerPage;
-  const PaginateRobots = allRobots.slice(pagesVisited, pagesVisited + robotsPerPage);
 
   useEffect(() => {
     fetchedRobots(allRobots);
@@ -26,6 +23,15 @@ const RobotList = props => {
     const { filter } = props;
     filter(material);
   };
+
+    // pagination
+    const robotsPerPage = 10;
+    const pagesVisited = pageNumber * robotsPerPage;
+    const PaginateRobots = allRobots.slice(pagesVisited, pagesVisited + robotsPerPage);
+    const pageCount = Math.ceil(allRobots.length / robotsPerPage);
+    const changePage = ({selected}) => {
+      setPageNumber(selected);
+    }
 
   // filter paginatedRobots instead of allRobots
   const filteredRobots = PaginateRobots.filter(robot => (
@@ -45,6 +51,17 @@ const RobotList = props => {
           />
         ))}
       </table>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={changePage }
+        containerClassName={"paginationBtns"}
+        previousLinkClassName={"previousBtn"}
+        nextLinkClassName={"nextBtn"}
+        disabledClassName={"paginateDisabled"}
+        activeClassName={"paginateActive"}
+      />
     </>
   );
 };
