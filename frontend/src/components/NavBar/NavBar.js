@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import NavStyles from './NavStyles.module.css';
 import logo from '../../assets/robot.jpg';
 import cart from '../../assets/cart.png';
-import { useSelector } from 'react-redux';
 
 const NavBar = () => {
   const counter = useSelector(state => state.robot.addedItems);

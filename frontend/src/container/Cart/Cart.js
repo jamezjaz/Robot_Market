@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import uuid from 'react-uuid';
 import { addQuantity, removeItem, subtractQuantity } from '../../redux/actions/actionCreators';
 import sortUp from '../../assets/sort-up.png';
 import sortDown from '../../assets/sort-down.png';
-import uuid from 'react-uuid';
 import DisplayTotal from '../../components/DisplayTotal/DisplayTotal';
 import cartStyles from './CartStyles.module.css';
 
 const Cart = props => {
   const { addedItems } = props;
   const addedItemsLen = addedItems.length;
-  console.log('Added items', addedItems);
 
   // to remove the item completely
   const handleRemove = id => {
@@ -95,7 +95,7 @@ const Cart = props => {
             ))
           )
           : (
-              <p>Nothing!</p>
+            <p>Nothing!</p>
           )}
         <div className="cart">
           <h5>You have added:</h5>
@@ -111,9 +111,16 @@ const Cart = props => {
   );
 };
 
+Cart.propTypes = {
+  addedItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  removedItem: PropTypes.func.isRequired,
+  addQty: PropTypes.func.isRequired,
+  subtractQty: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
   addedItems: state.robot.addedItems,
-  state: console.log('State', state.robot.addedItems),
+  // state: console.log('State', state.robot.addedItems),
 });
 
 // const mapStateToProps = state => {

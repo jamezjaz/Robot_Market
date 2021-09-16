@@ -14,12 +14,11 @@ const Robot = props => {
 
   const handleAddToCart = id => {
     const { addItemsToCart } = props;
-    console.log('Added to cart');
     // dispatch(addToCart(id));
     if (addedItems.length <= 5) {
       addItemsToCart(id);
     } else {
-      alert('You cannot add more than 5 items');
+      alert('You cannot add more than 5 items'); // eslint-disable-line
     }
   };
 
@@ -43,8 +42,8 @@ const Robot = props => {
                 <div className="mt-5">
                   <button
                     type="button"
-                    className={robot.stock > 0 ? "rounded-circle bg-success" : "rounded bg-danger"}
-                    disabled={robot.stock > 0 ? false : true}
+                    className={robot.stock > 0 ? 'rounded-circle bg-success' : 'rounded bg-danger'}
+                    disabled={!(robot.stock > 0)}
                     onClick={() => { handleAddToCart(robot.id); }}
                   >
                     <img src={addBtn} alt="add" />
@@ -67,7 +66,9 @@ Robot.propTypes = {
     stock: PropTypes.number,
     createdAt: PropTypes.string,
     material: PropTypes.string,
+    id: PropTypes.string,
   }).isRequired,
+  addItemsToCart: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
