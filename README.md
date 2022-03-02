@@ -54,7 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
   This is an e-commerce web application. It's a front-end application built with React and Redux. Here, the homepage displays a list of robots for users to browse, a cart that shows a list of selected robots is displayed on the right side of the screen.
-  On this market, users can filter robots based material type. They cannot add more than 5 different robots to cart. If a specific robot run out of stock, its add to cart button would be disabled.
+  On this market, users can filter robots based material type. They cannot add more than 5 different robots to cart. If a specific robot run out of stock, its add to cart button would be disabled. This project consumes a third party REST API.
 
 ## Preview
 ![robot-market](https://user-images.githubusercontent.com/57812000/130688692-6e3bcdb1-0aa6-4b93-9e20-4d5f9f097ad9.png)
@@ -86,6 +86,7 @@ To get a local copy up and running follow these simple example steps.
  * [Node.js](https://nodejs.org/) is required to install dependencies and run scripts via npm.
  * A modern browser
 
+## Client
 ### Clone
 * Clone this repo:
   - Clone with SSH:
@@ -110,6 +111,25 @@ Run ```$ npm install```
 To start the local webserver and have the application run live on http://localhost:3000/:
 
 Run ```$ npm start```
+
+## Server
+### Clone
+* Clone this repo:
+  - Clone with SSH:
+  ```
+    git clone git@bitbucket.org:morphosisteam/robot-market.git
+  ```
+  - Clone with HTTPS
+  ```
+    git clone https://bitbucket.org/morphosisteam/robot-market.git
+  ```
+    
+ - cd to robot-market
+ 
+### Setup
+Run ```$ npm install``` to install the dependencies
+
+Run ```$ npm start``` to start the server on localhost:3000
 
 
 <!-- CONTACT -->

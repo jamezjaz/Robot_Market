@@ -19,7 +19,7 @@ const fetchRobots = () => dispatch => {
     mode: 'cors',
   })
     .then(res => {
-      // console.log('Response', res.data.data);
+      console.log('Response', res.data.data);
       // const robotRes = res.data
       const robotRes = res.data.data.map(robot => {
         // generates unique ids from react-uuid
